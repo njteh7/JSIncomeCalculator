@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <title>Weekly Income Calculator</title>
+       <meta charset="UTF-8">
+</head>
+<style>
+input[type=text], select {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+input[type=text2], select {
+    width: 4%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+#cal {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+nav ul li {
+	float:left;
+	
+}	
+nav ul li a {
+	display: block;
+    color: gray;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+nav ul li a:hover:not(.active) {
+color: #B0C4DE;
+border-bottom-width: 5px;
+border-bottom-style: solid;
+border-bottom-color: #B0C4DE;
+}
+nav ul li a.active {
+color: #B0C4DE;
+border-bottom-width: 5px;
+border-bottom-style: solid;
+border-bottom-color: #B0C4DE;
+}
+nav ul li.right {
+float: right;
+}
+nav ul {
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #F0FFFF;
+
+}
+nav {
+border-bottom-width: 2px;
+border-bottom-style: solid;
+border-bottom-color: #778899;
+right: 100px;
+}
+div.banner {
+background-color:lightblue;
+}
+div.column-right {
+width: 200px;
+float: right;
+}
+div.search-bar {
+margin: 0;
+height: 50px;
+margin-top: 20px;
+}
+div.quotes {
+border-left: 2px solid black;
+border-top: 2px solid black;
+}
+header.p-header {
+float: left;
+margin: 0;
+border-bottom-style: solid;
+border-bottom-color: black;
+border-bottom-width: 2px;	
+}
+div.quotes-content {
+margin: 0;
+border-top-width: 5px;	
+}	
+div.column-left {
+float: left;
+width: 200px;
+}
+#required
+{
+    color: red;
+}
+</style>
+<body>
+<main>
+<div class="banner">
+<h1>Weekly Income Calculator</h1>
+</div>
+</main>
+<div id = "cal">
+
+Enter your name: <input type="text" id="name"></input><span id="required">*</span>
+<br><br>
+Your hourly rate $: <input type="text2" id="rate"></input><span id="required">*</span>
+<br><br><br>
+Your weekly hours:<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Monday: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text2" id="mon"></input><span id="required">*</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tuesday: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text2" id="tue"></input><span id="required">*</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wednesday: <input type="text2" id="wed"></input><span id="required">*</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thursday: &nbsp;&nbsp;&nbsp;<input type="text2" id="thu"></input><span id="required">*</span>
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Friday: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text2" id="fri"></input><span id="required">*</span>
+<br>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 
+<input onclick="cal()" type="submit" value="Submit">
+
+</div>
+<br><br><br><br>
+
+<center><h3 id="Result"></h3></center>
+
+<script>
+var totalEarn = 0;
+var totaEarnTcal = 0;
+var totalEarnT = 0;
+function cal(){
+var namef = document.getElementById("name").value;
+var hourlyRate = document.getElementById("rate").value;
+var mond = parseInt(document.getElementById("mon").value);
+var tued = parseInt(document.getElementById("tue").value);
+var wedd = parseInt(document.getElementById("wed").value);
+var thud = parseInt(document.getElementById("thu").value);
+var frid = parseInt(document.getElementById("fri").value);
+
+var weekTotal = mond + tued + wedd + thud + frid;
+totalEarn = weekTotal*hourlyRate;
+
+if (hourlyRate * 1920 <= 45282){
+totalEarn = weekTotal*hourlyRate;
+totaEarnTcal = totalEarn * 15 / 100;
+totalEarnT = totalEarn - totaEarnTcal;
+window.alert("Your income is calculated based on 15% tax deduction");
+}
+else if (45282 < hourlyRate * 1920 && hourlyRate * 1920 <= 90563){
+totalEarn = weekTotal*hourlyRate;
+totaEarnTcal = totalEarn * 20 / 100;
+totalEarnT = totalEarn - totaEarnTcal;
+window.alert("Your income is calculated based on 20% tax deduction");
+}
+else if (90563 < hourlyRate * 1920 && hourlyRate * 1920 <= 140388){
+totalEarn = weekTotal*hourlyRate;
+totaEarnTcal = totalEarn * 26 / 100;
+totalEarnT = totalEarn - totaEarnTcal;
+window.alert("Your income is calculated based on 26% tax deduction");
+}
+else if (140388 < hourlyRate * 1920 && hourlyRate * 1920 <= 200000){
+totalEarn = weekTotal*hourlyRate;
+totaEarnTcal = totalEarn * 29 / 100;
+totalEarnT = totalEarn - totaEarnTcal;
+window.alert("Your income is calculated based on 29% tax deduction");
+}
+else if (200000 < hourlyRate * 1920){
+totalEarn = weekTotal*hourlyRate;
+totaEarnTcal = totalEarn * 29 / 100;
+totalEarnT = totalEarn - totaEarnTcal;
+window.alert("Your income is calculated based on 29% tax deduction");
+}
+var te = totalEarn.toFixed(2);
+var tet = totalEarnT.toFixed(2);
+document.getElementById("Result").innerHTML=namef+", you have worked total of "+weekTotal+" hours this week, your earnings are $"+te+" before taxes, and $"+tet+" after taxes.";
+}
+</script>
+
+</body>
+<footer>
+  <p>Njteh Keledjian®</p>
+</footer>
+</html>
